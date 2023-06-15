@@ -8,20 +8,120 @@ namespace CardClasses
 {
     public class Deck
     {
-        // can instantiate the list here OR in the constructor
+        
         private List<Card> cards = new List<Card>();
+        foreach (var card in CreateDeck()) Console.WriteLine(card);
 
         public Deck()
         {
-            // 13 values
+            
             for (int value = 1; value <= 13; value++)
-                // in each of 4 suits
+                
                 for (int suit = 1; suit <= 4; suit++)
-                    // create the card and add it to the list
+                    
                     cards.Add(new Card(value, suit));
         }
+        public List<PlayingCard> CreateDeckOfCards()
+        {
+            // Create a new empty collection of playing cards
+            List<PlayingCard> deckOfCards = new List<PlayingCard>();
 
-        // read-only property
+            string cardsuitlabel = string.Empty;
+            string cardvaluelabel = string.Empty;
+
+            // Loop for each suit and assign the suit
+            for (int cardsuit = 0; cardsuit <= Suits - 1; cardsuit++)
+            {
+                cardsuitlabel = string.Empty;
+
+                switch (cardsuit)
+                {
+                    case 0:
+                        cardsuitlabel = "H"; 
+                        break;
+
+                    case 1:
+                        cardsuitlabel = "D"; 
+                        break;
+
+                    case 2:
+                        cardsuitlabel = "C"; 
+                        break;
+
+                    case 3:
+                        cardsuitlabel = "S"; 
+                        break;
+
+                    default:
+                        break;
+                }
+                for (int cardsuit = 0; cardsuit <= Suits - 1; cardsuit++)
+                {
+                    cardsuitlabel = string.Empty;
+
+                    switch (cardsuit)
+                    {
+                        case 0:
+                            cardsuitlabel = "H"; // Hearts
+                            break;
+
+                        case 1:
+                            cardsuitlabel = "D"; // Diamonds
+                            break;
+
+                        case 2:
+                            cardsuitlabel = "C"; // clubs
+                            break;
+
+                        case 3:
+                            cardsuitlabel = "S"; // Spades
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    // Loop for each card and create the card in the suit.
+                    for (int cardvalue = 1; cardvalue <= CardsInSuit; cardvalue++)
+                    {
+                        cardvaluelabel = string.Empty;
+
+                        // Instantiate the new playing card
+                        PlayingCard mycard = new PlayingCard();
+
+                        // Assign the value of the card
+                        switch (cardvalue)
+                        {
+                            case 1:
+                                cardvaluelabel = "A"; 
+                                break;
+
+                            case 11:
+                                cardvaluelabel = "J"; 
+                                break;
+
+                            case 12:
+                                cardvaluelabel = "Q"; 
+                                break;
+
+                            case 13:
+                                cardvaluelabel = "K"; 
+                                break;
+
+                            default:
+                                cardvaluelabel = cardvalue.ToString(); 
+                                break;
+                        }
+
+                        mycard.CardSuit = cardsuitlabel;
+                        mycard.CardValue = cardvaluelabel;
+                        mycard.CardPlayed = false;
+
+                      
+                        deckOfCards.Add(mycard);
+                    }
+                }
+
         public int NumCards
         {
             get
@@ -30,7 +130,7 @@ namespace CardClasses
             }
         }
 
-        // read-only property
+
         public bool IsEmpty
         {
             get
@@ -50,13 +150,12 @@ namespace CardClasses
         // dealing from the deck should return a card object
         public Card Deal()
         {
-            // if the deck still has cards
+            
             if (!IsEmpty)
             {
-                // get a refernce to the first card
+                
                 Card c = cards[0];
-                // remove the card from the list
-                // could have used cards.RemoveAt[0];
+                
                 cards.Remove(c);
                 // return the first card
                 return c;
@@ -64,6 +163,10 @@ namespace CardClasses
             // when the deck is empty, return null or throw an exception
             return null;
         }
+
+        public Card Compare()
+
+
 
         public void Shuffle()
         {
@@ -79,6 +182,10 @@ namespace CardClasses
                 cards[i] = c;
             }
         }
+
+       
+
+
 
         public override string ToString()
         {
