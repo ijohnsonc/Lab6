@@ -10,7 +10,7 @@ namespace CardClasses
     {
         
         private List<Card> cards = new List<Card>();
-        foreach (var card in CreateDeck()) Console.WriteLine(card);
+        
 
         public Deck()
         {
@@ -164,9 +164,7 @@ namespace CardClasses
             return null;
         }
 
-        public Card Compare()
-
-
+       
 
         public void Shuffle()
         {
