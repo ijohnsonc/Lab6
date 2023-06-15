@@ -30,6 +30,10 @@ namespace Hand
                 return 1;
             if (x.Suit < y.Suit)
                 return -1;
+            if (x.Value = y.Value)
+                return true;
+            if (x.Suit = y.Suit)
+                return true;
             return 0;
         }
     }
@@ -60,6 +64,9 @@ namespace Hand
     enum Values
     {
         Ace = 1,
+        Jack = 10,
+        Queen = 11,
+        King = 12,
         Two,
         Three,
         Four,
@@ -69,9 +76,7 @@ namespace Hand
         Eight,
         Nine,
         Ten,
-        Jack=10,
-        Queen=11,
-        King=12,
+        
     }
 }
 
